@@ -1,20 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
-import Button from '@mui/material/Button';
-import { BrowserRouter, Routes, Route } from 'react-router-dom' ;
-import { Box } from '@mui/material' ;
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {Box} from '@mui/material';
+import {Navbar, ChannelDetail, VideoDetail, SearchFeed, CustomFeed} from './components' ;
 
-function App() {
-  return (
-    <body>
-      
-      <h1>Youtube clone App</h1>
-      <div>Clone</div>
-      <Button variant="contained" href="/">Hello world</Button>
-
-    </body>
-  
-  );
-}
+const App = () => (
+    <BrowserRouter>
+        <Box sx={{ backgroundColor: '#0b0303' }}>
+            <Navbar />
+            <Routes>
+                <Route path="/" exact element={<CustomFeed />} />
+                <Route path="/video/:id" element={<VideoDetail />} />
+                <Route path="/channel/:id" element={<ChannelDetail />} />
+                <Route path="/search/:searchTerm" element={<SearchFeed />} />
+            </Routes>
+        </Box>
+    </BrowserRouter>
+);
 
 export default App;
